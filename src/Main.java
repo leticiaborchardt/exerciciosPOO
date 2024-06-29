@@ -1,3 +1,5 @@
+import ExClasseCasa.Casa;
+import ExClasseCelular.Celular;
 import ExClasseFilme.Filme;
 import ExClasseFuncionario.Funcionario;
 import ExClassePessoa.Pessoa;
@@ -17,12 +19,13 @@ public class Main {
                 case 2 -> exercicioProduto();
                 case 3 -> exercicioFilme();
                 case 4 -> exercicioFuncionario();
+                case 5 -> exercicioCasa();
+                case 6 -> exercicioCelular();
                 case 0 -> continuar = false;
                 default -> System.out.println("Opção inválida.");
             }
         }
     }
-
 
     public static String exibirOpcoes() {
         return "-----------------------------" + "\n" +
@@ -33,6 +36,8 @@ public class Main {
                 "[2] Classe Produto" + "\n" +
                 "[3] Classe Filme" + "\n" +
                 "[4] Classe Funcionário" + "\n" +
+                "[5] Classe Casa" + "\n" +
+                "[6] Classe Celular" + "\n" +
                 "[0] Sair" + "\n" +
                 "-----------------------------";
     }
@@ -175,6 +180,68 @@ public class Main {
                     );
 
                     System.out.println("Funcionário promovido a: " + funcionario.getCargo());
+                    break;
+                case 0:
+                    continuar = false;
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
+            }
+        }
+    }
+
+    /**
+     * Descrição do exercício:
+     * <p>
+     * Crie uma classe chamada Casa para modelar informações sobre uma casa.
+     * Atributos: Endereço, Número de Quartos, Área, Valor
+     * Métodos: exibirDetalhes e calcularValorImposto.
+     */
+    private static void exercicioCasa() {
+        Casa casa = new Casa();
+        casa.cadastrar();
+
+        boolean continuar = true;
+
+        while (continuar) {
+            switch (ValidadorInput.obterInteiro(casa.exibirOpcoes())) {
+                case 1:
+                    casa.exibirDetalhes();
+                    break;
+                case 2:
+                    double taxa = ValidadorInput.obterDouble("Digite a taxa do imposto sobre o valor: ");
+                    System.out.println("Valor do imposto de renda: R$" + casa.calcularValorImposto(taxa));
+                    break;
+                case 0:
+                    continuar = false;
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
+            }
+        }
+    }
+
+    /**
+     * Descrição do exercício:
+     * <p>
+     * Crie uma classe chamada Celular para modelar informações sobre um celular.
+     * Atributos: Marca, Modelo, Armazenamento, Aplicativos instalados
+     * Métodos: instalarAplicativo e exibirInformacoes.
+     */
+    private static void exercicioCelular() {
+        Celular celular = new Celular();
+        celular.cadastrar();
+
+        boolean continuar = true;
+
+        while (continuar) {
+            switch (ValidadorInput.obterInteiro(celular.exibirOpcoes())) {
+                case 1:
+                    celular.exibirInformacoes();
+                    break;
+                case 2:
+                    celular.instalarAplicativo(ValidadorInput.obterString("Digite o nome do aplicativo: "));
+                    System.out.println("Aplicativo instalado!");
                     break;
                 case 0:
                     continuar = false;
