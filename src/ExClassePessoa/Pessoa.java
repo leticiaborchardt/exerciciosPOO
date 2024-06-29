@@ -64,14 +64,13 @@ public class Pessoa {
 
     public void mostrarInformacoes() {
         System.out.println("---- Informações ----");
-        System.out.println("Nome: " + getNome());
-        System.out.println("Idade: " + getIdade() + " anos");
-        System.out.println("Altura: " + getAltura() + "m");
-        System.out.println("Peso: " + getPeso() + "kg");
+        System.out.println("Nome: " + this.getNome());
+        System.out.println("Idade: " + this.getIdade() + " anos");
+        System.out.println("Altura: " + this.getAltura() + "m");
+        System.out.println("Peso: " + this.getPeso() + "kg");
     }
 
     public void cadastrar() {
-        this.setNome(ValidadorInput.obterString("Digite o nome da pessoa: "));
         this.setNome(ValidadorInput.obterString("Digite o nome da pessoa: "));
         this.setIdade(ValidadorInput.obterInteiro("Digite a idade da pessoa: "));
         this.setAltura(ValidadorInput.obterDouble("Digite a altura da pessoa: "));
