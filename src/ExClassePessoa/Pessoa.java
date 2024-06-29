@@ -1,5 +1,8 @@
 package ExClassePessoa;
 
+import Utils.ValidadorInput;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Pessoa {
@@ -70,33 +73,25 @@ public class Pessoa {
         System.out.println("Peso: " + getPeso() + "kg");
     }
 
-    public void exibirOpcoes() {
-        System.out.println("-----------------------------\n" +
+    public void cadastrar() {
+        this.setNome(ValidadorInput.obterString("Digite o nome da pessoa: "));
+        this.setIdade(ValidadorInput.obterInteiro("Digite a idade da pessoa: "));
+        this.setAltura(ValidadorInput.obterDouble("Digite a altura da pessoa: "));
+        this.setPeso(ValidadorInput.obterDouble("Digite o peso da pessoa: "));
+
+        System.out.println("Pessoa Cadastrada!");
+
+        this.mostrarInformacoes();
+    }
+
+    public String exibirOpcoes() {
+        return "-----------------------------\n" +
                 "Escolha uma opção:\n" +
                 "[1] Mostrar informações\n" +
                 "[2] Envelhecer\n" +
                 "[3] Engordar\n" +
                 "[4] Emagrecer\n" +
                 "[0] Sair\n" +
-                "-----------------------------");
-    }
-
-    public void cadastrar() {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Digite o nome da pessoa: ");
-        this.setNome(sc.next());
-
-        System.out.println("Digite a idade da pessoa: ");
-        this.setIdade(sc.nextInt());
-
-        System.out.println("Digite a altura da pessoa: ");
-        this.setAltura(sc.nextDouble());
-
-        System.out.println("Digite o peso da pessoa: ");
-        this.setPeso(sc.nextDouble());
-
-        System.out.println("Pessoa Cadastrada!");
-        this.mostrarInformacoes();
+                "-----------------------------";
     }
 }

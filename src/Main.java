@@ -1,5 +1,6 @@
 import ExClassePessoa.Pessoa;
 import ExClasseProduto.Produto;
+import Utils.ValidadorInput;
 
 import java.util.Scanner;
 
@@ -10,11 +11,7 @@ public class Main {
         boolean continuar = true;
 
         while (continuar) {
-            exibirOpcoes();
-
-            int escolha = sc.nextInt();
-
-            switch (escolha) {
+            switch (ValidadorInput.obterInteiro(exibirOpcoes())) {
                 case 1 -> exercicioPessoa();
                 case 2 -> exercicioProduto();
                 case 0 -> continuar = false;
@@ -23,15 +20,15 @@ public class Main {
         }
     }
 
-    public static void exibirOpcoes() {
-        System.out.println("-----------------------------" + "\n" +
+    public static String exibirOpcoes() {
+        return "-----------------------------" + "\n" +
                 "LISTA DE EXERCÍCIOS POO 3" + "\n" +
                 "-----------------------------" + "\n" +
                 "Escolha o exercício: " + "\n" +
                 "[1] Classe Pessoa" + "\n" +
                 "[2] Classe Produto" + "\n" +
                 "[0] Sair" + "\n" +
-                "-----------------------------");
+                "-----------------------------";
     }
 
     public static void exercicioPessoa() {
@@ -41,9 +38,7 @@ public class Main {
         boolean continuar = true;
 
         while (continuar) {
-            pessoa.exibirOpcoes();
-
-            switch (sc.nextInt()) {
+            switch (ValidadorInput.obterInteiro(pessoa.exibirOpcoes())) {
                 case 1:
                     pessoa.mostrarInformacoes();
                     break;
@@ -53,12 +48,12 @@ public class Main {
                     System.out.println("Feliz aniversário!\nIdade atual: " + pessoa.getIdade());
                     break;
                 case 3:
-                    System.out.println("Digite o peso para engordar:");
-                    pessoa.engordar(sc.nextDouble());
+                    pessoa.engordar(ValidadorInput.obterDouble("Digite o peso para engordar:"));
+                    System.out.println("Peso atualizado: " + pessoa.getPeso());
                     break;
                 case 4:
-                    System.out.println("Digite o peso para emagrecer:");
-                    pessoa.emagrecer(sc.nextDouble());
+                    pessoa.emagrecer(ValidadorInput.obterDouble("Digite o peso para emagrecer:"));
+                    System.out.println("Peso atualizado: " + pessoa.getPeso());
                     break;
                 case 0:
                     continuar = false;
@@ -76,13 +71,10 @@ public class Main {
         boolean continuar = true;
 
         while (continuar) {
-            produto.exibirOpcoes();
-
-            switch (sc.nextInt()) {
+            switch (ValidadorInput.obterInteiro(produto.exibirOpcoes())) {
                 case 1:
                     System.out.println("Estoque anterior: " + produto.getQuantidadeEstoque());
-                    System.out.println("Digite a quantidade que deseja comprar: ");
-                    produto.atualizarEstoque(sc.nextInt());
+                    produto.atualizarEstoque(ValidadorInput.obterInteiro("Digite a quantidade que deseja comprar: "));
                     System.out.println("Estoque atual: " + produto.getQuantidadeEstoque());
                     break;
                 case 2:
