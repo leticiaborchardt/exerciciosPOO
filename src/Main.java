@@ -1,4 +1,5 @@
 import ExClassePessoa.Pessoa;
+import ExClasseProduto.Produto;
 
 import java.util.Scanner;
 
@@ -69,6 +70,30 @@ public class Main {
     }
 
     public static void exercicioProduto() {
+        Produto produto = new Produto();
+        produto.cadastrar();
 
+        boolean continuar = true;
+
+        while (continuar) {
+            produto.exibirOpcoes();
+
+            switch (sc.nextInt()) {
+                case 1:
+                    System.out.println("Estoque anterior: " + produto.getQuantidadeEstoque());
+                    System.out.println("Digite a quantidade que deseja comprar: ");
+                    produto.atualizarEstoque(sc.nextInt());
+                    System.out.println("Estoque atual: " + produto.getQuantidadeEstoque());
+                    break;
+                case 2:
+                    produto.exibirDetalhes();
+                    break;
+                case 0:
+                    continuar = false;
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
+            }
+        }
     }
 }
