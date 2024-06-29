@@ -27,7 +27,10 @@ public class ValidadorInput {
 
         while (true) {
             try {
-                return supplier.get();
+                var valor = supplier.get();
+                sc.nextLine();
+
+                return valor;
             } catch (InputMismatchException e) {
                 System.out.println(mensagemErro);
                 sc.next();

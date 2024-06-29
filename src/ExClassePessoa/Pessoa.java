@@ -2,9 +2,6 @@ package ExClassePessoa;
 
 import Utils.ValidadorInput;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 public class Pessoa {
     private String nome;
     private int idade;
@@ -74,6 +71,7 @@ public class Pessoa {
     }
 
     public void cadastrar() {
+        this.setNome(ValidadorInput.obterString("Digite o nome da pessoa: "));
         this.setNome(ValidadorInput.obterString("Digite o nome da pessoa: "));
         this.setIdade(ValidadorInput.obterInteiro("Digite a idade da pessoa: "));
         this.setAltura(ValidadorInput.obterDouble("Digite a altura da pessoa: "));
